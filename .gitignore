@@ -1,0 +1,58 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/contents.xcworkspacedata
+xcshareddata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+*.hmap
+*.ipa
+*.xcarchive
+DerivedData/
+.build/
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Environment & Secrets
+.env
+.env.local
+*.p12
+*.pem
+AuthKey_*.p8
+ExportOptions.plist
+
+# Claude Code session state (ephemeral)
+production/session-state/active.md
+production/session-logs/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# VS Code
+.vscode/
+
+# Crash logs
+*.crash
+
+# Test results
+TestResults/
