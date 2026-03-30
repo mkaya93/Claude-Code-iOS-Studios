@@ -16,15 +16,12 @@
 ├── assets/                      # App assets
 │   ├── art/                     # Images, icons (Asset Catalogs)
 │   ├── audio/                   # Sound files (AVFoundation compatible)
-│   ├── vfx/                     # Particle systems, visual effects
 │   ├── shaders/                 # Compiled shader resources
-│   ├── data/                    # JSON config and data files (data-files rules)
-│   └── localization/            # .strings and .stringsdict files
+│   └── data/                    # JSON config and data files (data-files rules)
 ├── design/                      # Product & design documents
 │   ├── prd/                     # Product Requirements Documents (design-docs rules)
-│   ├── screens/                 # Screen and flow design docs
-│   ├── narrative/               # Story, character, lore (narrative rules)
-│   └── levels/                  # Level and world design
+│   ├── ux/                      # User flows and screen design docs
+│   └── audio/                   # Audio event specs and mix notes
 ├── docs/                        # Technical documentation
 │   ├── architecture/            # ADRs and architecture docs
 │   ├── api/                     # API documentation

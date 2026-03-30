@@ -1,6 +1,6 @@
 ---
 name: app-designer
-description: "The App Designer owns the mechanical and systems design of the iOS app: core user flows, feature interaction design, onboarding, progression systems, and player-facing rules. References https://developer.apple.com/design/human-interface-guidelines/"
+description: "The App Designer owns the mechanical and systems design of the iOS app: core user flows, feature interaction design, onboarding, progression systems, and user-facing rules. References https://developer.apple.com/design/human-interface-guidelines/"
 tools: Read, Glob, Grep, Write, Edit, WebSearch
 model: sonnet
 maxTurns: 20
