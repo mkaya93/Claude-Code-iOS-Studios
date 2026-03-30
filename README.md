@@ -6,7 +6,7 @@
 
 ## What Is This?
 
-Claude Code iOS Studios is a project template that brings a full "studio" team structure to iOS development via Claude Code's subagent system. Instead of one general-purpose assistant, you get 43 specialized agents — each owning a specific domain, each referencing official Apple documentation — coordinated through 38 slash-command skills and enforced by 11 path-scoped coding rules.
+Claude Code iOS Studios is a project template that brings a full "studio" team structure to iOS development via Claude Code's subagent system. Instead of one general-purpose assistant, you get **41 specialized agents** — each owning a specific domain, each referencing official Apple documentation — coordinated through **36 slash-command skills** and enforced by **10 path-scoped coding rules**.
 
 Think of it as having a full iOS team on call: architects, SwiftUI specialists, QA leads, a release manager, accessibility auditors, and more — all in one Claude Code session. Connect your Figma file and designs flow directly into SwiftUI code.
 
@@ -46,7 +46,7 @@ Figma → Account Settings → Security → Personal access tokens → Generate 
 }
 ```
 
-> `.mcp.json` is checked in with a placeholder key. Replace `YOUR_FIGMA_API_KEY` with your real key locally — it is safe to commit since the key is in your local environment only. If you prefer, copy to `.mcp.local.json` (gitignored) and use that instead.
+> `.mcp.json` is checked in with a placeholder key. Replace `YOUR_FIGMA_API_KEY` with your real token locally. If you prefer not to touch the committed file, copy it to `.mcp.local.json` (gitignored) and use that instead.
 
 **3. Run `/figma-sync`**
 ```
@@ -67,7 +67,7 @@ Paste your Figma frame URL and the agent reads the design, extracts tokens, and 
 ### 1. Clone or copy this template
 
 ```bash
-git clone <this-repo> MyApp
+git clone https://github.com/mkaya93/Claude-Code-iOS-Studios.git MyApp
 cd MyApp
 ```
 
@@ -113,7 +113,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 
 ## Agent Reference
 
-### iOS Platform Specialists
+### Figma & iOS Platform
 
 | Agent | Owns |
 |-------|------|
@@ -122,7 +122,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `swiftui-specialist` | SwiftUI views, `@Observable`, `.task`, animations |
 | `uikit-specialist` | UIKit view hierarchy, Auto Layout, diffable data sources |
 | `metal-specialist` | Metal shaders, GPU pipelines, MSL, GPU Frame Debugger |
-| `spritekit-specialist` | 2D game scenes, physics, texture atlases |
+| `spritekit-specialist` | 2D scenes, physics simulation, texture atlases |
 | `scenekit-realitykit-specialist` | 3D, AR, RealityKit entity-component system, ARKit |
 | `gamekit-specialist` | Game Center, leaderboards, achievements, multiplayer |
 | `xcode-specialist` | Build system, Swift Package Manager, signing, Xcode Cloud |
@@ -162,6 +162,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `systems-designer` | Feature mechanics, formulas, state machines |
 | `economy-designer` | IAP, StoreKit 2, resource economy, ethical monetization |
 | `writer` | Onboarding copy, UI text, notifications, error messages |
+| `technical-artist` | Metal VFX, rendering optimization, art pipeline tools |
 
 ### Quality & Operations
 
@@ -176,7 +177,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `analytics-engineer` | Event tracking, ATT compliance, A/B testing |
 | `prototyper` | Throwaway SwiftUI prototypes for concept validation |
 | `live-ops-designer` | Post-launch events, push notifications, retention |
-| `community-manager` | App Store notes, reviews, player communication |
+| `community-manager` | App Store notes, reviews, user communication |
 
 ---
 
@@ -186,7 +187,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 
 | Command | What it does |
 |---------|-------------|
-| `/figma-sync` | Read a Figma frame via MCP → generate SwiftUI view + design tokens |
+| `/figma-sync` | Read a Figma frame via MCP → generate SwiftUI view + design tokens + HIG delta |
 
 ### Pre-Production
 
@@ -223,8 +224,9 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `/bug-report` | File a structured bug report with severity, steps, environment |
 | `/perf-profile` | Guide an Instruments profiling session (Time Profiler, Allocations, Leaks) |
 | `/privacy-check` | Audit Privacy Manifest, permissions, data handling, ATT compliance |
-| `/accessibility-check` | Full VoiceOver, Dynamic Type, Reduce Motion audit |
 | `/asset-audit` | Audit assets for naming, missing variants, format issues |
+
+> Accessibility audits are handled directly by the `accessibility-specialist` agent — ask it to audit any screen.
 
 ### Production Planning
 
@@ -292,14 +294,15 @@ Claude-Code-iOS-Studios/
 │
 ├── CLAUDE.md                      # Master configuration — loaded every session
 ├── README.md                      # This file
+├── .mcp.json                      # Figma MCP server config (add your API key here)
 ├── .gitignore                     # Ignores DerivedData, .p12, session state
 │
 ├── .claude/
 │   ├── settings.json              # Hooks config, allowed/denied Bash commands
 │   ├── statusline.sh              # Status line script (shows project stage)
-│   ├── agents/                    # 43 agent definitions
-│   ├── skills/                    # 38 slash-command workflows
-│   ├── rules/                     # 11 path-scoped coding rules
+│   ├── agents/                    # 41 agent definitions
+│   ├── skills/                    # 36 slash-command workflows
+│   ├── rules/                     # 10 path-scoped coding rules
 │   ├── hooks/                     # 8 automation hooks
 │   └── docs/                      # Shared docs (standards, coordination, context)
 │
@@ -314,13 +317,12 @@ Claude-Code-iOS-Studios/
 │
 ├── design/
 │   ├── prd/                       # Product Requirements Documents (8-section format)
-│   ├── ux/flows/                  # User flow diagrams and screen maps
-│   ├── narrative/                 # Story, lore, dialogue scripts
-│   └── audio/                     # SFX specs, audio event docs
+│   ├── ux/                        # User flow diagrams and screen maps
+│   └── audio/                     # Audio event specs and mix notes
 │
 ├── assets/
 │   ├── art/                       # Source art, Asset Catalogs (.xcassets)
-│   ├── audio/                     # SFX (.caf) and music (.m4a) files
+│   ├── audio/                     # Sound files (AVFoundation compatible)
 │   ├── shaders/                   # Compiled/referenced shader assets
 │   └── data/                      # JSON config files (tuning, balance, content)
 │
@@ -399,41 +401,49 @@ Reference: [developer.apple.com/app-store/review/guidelines](https://developer.a
 
 ## Workflow Examples
 
-### Starting a new feature
+### Design from Figma to SwiftUI
 
 ```
-1. /brainstorm          → explore 3-5 approaches
-2. /prototype           → validate the best idea in SwiftUI
-3. /design-system       → write the full PRD
+1. /figma-sync        → paste Figma frame URL → SwiftUI view + design tokens generated
+2. /code-review       → review the generated code
+3. /design-review     → verify PRD acceptance criteria are met
+```
+
+### Starting a new feature from scratch
+
+```
+1. /brainstorm        → explore 3-5 approaches
+2. /prototype         → validate the best idea in SwiftUI
+3. /design-system     → write the full PRD
 4. /architecture-decision → record any new patterns
-5. /team-feature        → coordinate implementation
-6. /code-review         → review the implementation
+5. /team-feature      → coordinate implementation
+6. /code-review       → review the implementation
 ```
 
 ### Preparing an App Store release
 
 ```
-1. /gate-check          → verify Beta → Release quality gate
-2. /release-checklist   → work through the full submission checklist
-3. /privacy-check       → audit Privacy Manifest and permissions
-4. /testflight-report   → confirm crash-free rate and feedback
-5. /patch-notes         → write App Store "What's New"
-6. /launch-checklist    → coordinate launch day
+1. /gate-check        → verify Beta → Release quality gate
+2. /release-checklist → work through the full submission checklist
+3. /privacy-check     → audit Privacy Manifest and permissions
+4. /testflight-report → confirm crash-free rate and feedback
+5. /patch-notes       → write App Store "What's New"
+6. /launch-checklist  → coordinate launch day
 ```
 
 ### Debugging a performance issue
 
 ```
-1. /perf-profile        → guided Instruments session
-2. /bug-report          → document the finding
-3. /code-review         → review the fix
+1. /perf-profile      → guided Instruments session
+2. /bug-report        → document the finding
+3. /code-review       → review the fix
 ```
 
 ### Onboarding a new developer
 
 ```
-/onboard                → generates role-specific setup checklist
-                          and pointers to key docs
+/onboard              → generates role-specific setup checklist
+                        and pointers to key docs
 ```
 
 ---
@@ -480,7 +490,7 @@ Task: Implement token refresh
 | iOS SDK | iOS 18 |
 | Swift | Swift 6 |
 | Xcode | Xcode 16 |
-| SwiftUI | iOS 17+ features enabled (RealityView, @Observable) |
+| SwiftUI | iOS 17+ features enabled (`@Observable`, `NavigationStack`, `.task`) |
 
 Full details: `docs/engine-reference/ios/VERSION.md`
 
@@ -513,9 +523,10 @@ Full details: `docs/engine-reference/ios/VERSION.md`
 | App Store Review Guidelines | https://developer.apple.com/app-store/review/guidelines/ |
 | Privacy Manifest | https://developer.apple.com/documentation/bundleresources/privacy-manifest-files |
 | Accessibility | https://developer.apple.com/documentation/accessibility |
+| Figma Developer API | https://www.figma.com/developers/api |
 
 ---
 
 ## License
 
-MIT — use this template for any iOS project, commercial or personal.
+MIT for individuals and open-source projects. A commercial license is required for use within for-profit products or businesses. Contact for commercial licensing.
