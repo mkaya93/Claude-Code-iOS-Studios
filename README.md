@@ -1,6 +1,6 @@
 # Claude Code iOS Studios
 
-> A complete iOS mobile development environment powered by 43 coordinated Claude Code subagents — covering every discipline from Swift architecture to App Store release.
+> A complete iOS mobile development environment powered by 41 coordinated Claude Code subagents — covering every discipline from Swift architecture to App Store release, with native Figma MCP integration.
 
 ---
 
@@ -8,7 +8,7 @@
 
 Claude Code iOS Studios is a project template that brings a full "studio" team structure to iOS development via Claude Code's subagent system. Instead of one general-purpose assistant, you get 43 specialized agents — each owning a specific domain, each referencing official Apple documentation — coordinated through 38 slash-command skills and enforced by 11 path-scoped coding rules.
 
-Think of it as having a full iOS team on call: architects, SwiftUI specialists, QA leads, a release manager, accessibility auditors, and more — all in one Claude Code session.
+Think of it as having a full iOS team on call: architects, SwiftUI specialists, QA leads, a release manager, accessibility auditors, and more — all in one Claude Code session. Connect your Figma file and designs flow directly into SwiftUI code.
 
 ---
 
@@ -18,6 +18,47 @@ Think of it as having a full iOS team on call: architects, SwiftUI specialists, 
 - Claude API access (Anthropic account)
 - macOS with Xcode installed (for actual iOS development)
 - Git
+- Node.js (for Figma MCP — `brew install node`)
+
+---
+
+## Figma Integration
+
+Claude Code iOS Studios includes native Figma MCP support. Connect your Figma designs and the `figma-specialist` agent will read frames directly and generate matching SwiftUI code.
+
+### Setup
+
+**1. Get your Figma API key**
+Figma → Account Settings → Security → Personal access tokens → Generate new token
+
+**2. Add your key to `.mcp.json`**
+```json
+{
+  "mcpServers": {
+    "figma": {
+      "command": "npx",
+      "args": ["-y", "figma-developer-mcp", "--stdio"],
+      "env": {
+        "FIGMA_API_KEY": "your-actual-key-here"
+      }
+    }
+  }
+}
+```
+
+> `.mcp.json` is checked in with a placeholder key. Replace `YOUR_FIGMA_API_KEY` with your real key locally — it is safe to commit since the key is in your local environment only. If you prefer, copy to `.mcp.local.json` (gitignored) and use that instead.
+
+**3. Run `/figma-sync`**
+```
+/figma-sync
+```
+Paste your Figma frame URL and the agent reads the design, extracts tokens, and generates SwiftUI.
+
+### What `/figma-sync` produces
+
+- **`src/ui/[ComponentName].swift`** — pixel-accurate SwiftUI view with `#Preview`
+- **`src/ui/DesignTokens.swift`** — extracted colors, fonts, and spacing as Swift constants
+- **HIG delta list** — any Figma decisions that conflict with iOS standards (touch targets, Dark Mode, Dynamic Type)
 
 ---
 
@@ -76,6 +117,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 
 | Agent | Owns |
 |-------|------|
+| `figma-specialist` | Reads Figma frames via MCP; generates SwiftUI code and design tokens |
 | `ios-specialist` | All iOS APIs; delegates to sub-specialists |
 | `swiftui-specialist` | SwiftUI views, `@Observable`, `.task`, animations |
 | `uikit-specialist` | UIKit view hierarchy, Auto Layout, diffable data sources |
@@ -139,6 +181,12 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 ---
 
 ## Skill Reference
+
+### Figma
+
+| Command | What it does |
+|---------|-------------|
+| `/figma-sync` | Read a Figma frame via MCP → generate SwiftUI view + design tokens |
 
 ### Pre-Production
 

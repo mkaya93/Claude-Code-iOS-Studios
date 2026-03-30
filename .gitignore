@@ -40,6 +40,10 @@ fastlane/test_output
 AuthKey_*.p8
 ExportOptions.plist
 
+# MCP — keep .mcp.json structure but never commit real API keys
+# Copy .mcp.json to .mcp.local.json and add your real keys there
+.mcp.local.json
+
 # Claude Code session state (ephemeral)
 production/session-state/active.md
 production/session-logs/
