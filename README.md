@@ -119,10 +119,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `screen-designer` | Screen layouts, navigation maps, empty/error states |
 | `systems-designer` | Feature mechanics, formulas, state machines |
 | `economy-designer` | IAP, StoreKit 2, resource economy, ethical monetization |
-| `narrative-director` | Story architecture, character design, dialogue systems |
-| `world-builder` | Lore, factions, history, world rules |
 | `writer` | Onboarding copy, UI text, notifications, error messages |
-| `sound-designer` | SFX specs, audio events, AVAudioEngine node graphs |
 
 ### Quality & Operations
 
@@ -188,7 +185,6 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `/sprint-plan` | Plan a sprint with P0/P1/P2 items and Definition of Done |
 | `/milestone-review` | Formal milestone gate: assess completion, quality, and risk |
 | `/gate-check` | Quality gate assessment for stage transitions |
-| `/balance-check` | Verify game/app mechanics are balanced against PRD formulas |
 | `/retrospective` | Sprint or release retrospective (went well / didn't / learned / change) |
 
 ### Release
@@ -218,9 +214,7 @@ Bash hooks in `.claude/hooks/` run automatically at key events — session start
 | `/team-release` | Full App Store release coordination across all departments |
 | `/team-polish` | Polish sprint: visual, interaction, performance, accessibility, copy |
 | `/team-audio` | Coordinate audio implementation: AVAudioSession, SFX, mixing |
-| `/team-narrative` | Coordinate narrative content: story, copy, localization pipeline |
 | `/team-ui` | Coordinate UI/UX design → implementation → accessibility |
-| `/team-level` | Coordinate level/content design for structured experiences |
 
 ---
 
@@ -240,7 +234,6 @@ These rules are automatically applied based on the file path being edited — no
 | `design-docs` | `design/prd/**` | 8 required PRD sections including HIG Compliance |
 | `test-standards` | `tests/**` | XCTest + Swift Testing patterns, Arrange/Act/Assert, no shared state |
 | `prototype-code` | `prototypes/**` | Relaxed standards, README required, never import to `src/` |
-| `narrative` | `design/narrative/**` | 120-char dialogue limit, localization-ready, canon levels |
 
 ---
 
