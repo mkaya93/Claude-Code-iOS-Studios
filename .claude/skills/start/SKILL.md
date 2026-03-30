@@ -83,7 +83,6 @@ Create `.gitkeep` files in:
 - `src/networking/`
 - `design/prd/`
 - `design/ux/flows/`
-- `design/narrative/`
 - `assets/art/`
 - `assets/audio/`
 - `tests/unit/`

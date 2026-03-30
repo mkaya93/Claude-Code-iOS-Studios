@@ -5,16 +5,15 @@ Coordinate the audio team for implementing sound design across the app.
 ## Process
 
 ### 1. Audit Current State
-- Read Sound Designer's spec sheets in `design/audio/`
 - Check `assets/audio/` for delivered audio files
+- Review `design/audio/` for any audio event specs
 - Identify gaps: designed but not delivered, delivered but not implemented
 
 ### 2. Assign Work
 
 | Role | Task |
 |------|------|
-| Sound Designer | Create SFX specs, deliver audio files |
-| Audio Director | Review mix, define category volumes |
+| Audio Director | Define audio events, review mix, define category volumes |
 | Feature Programmer | Implement AVAudioEngine integration |
 | iOS Core Programmer | AVAudioSession setup at app launch |
 
